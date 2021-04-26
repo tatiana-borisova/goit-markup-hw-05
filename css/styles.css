@@ -172,7 +172,7 @@ img {
   background-color: var(--accent-color);
   border-radius: 2px;
   left: 0;
-  bottom: 0;
+  bottom: -1px;
 }
 /* nav-icons */
 
@@ -332,6 +332,26 @@ img {
 }
 .work-item:not(:last-child) {
   margin-right: 30px;
+}
+.work-img {
+  position: relative;
+}
+.work-text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(47, 48, 58, 0.8);
+
+  font-weight: 700;
+  line-height: 1.14;
+  text-transform: uppercase;
+  color: white;
 }
 
 /* team */
@@ -497,16 +517,18 @@ img {
 }
 .card-description {
   position: absolute;
-
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
   padding-left: 24px;
   padding-right: 24px;
+  opacity: 0;
+
   font-size: 18px;
   line-height: 1.56;
   color: white;
   background-color: rgba(33, 150, 243, 0.9);
-  opacity: 0;
 }
 .card:hover .card-description,
 .card:focus .card-description {
@@ -607,12 +629,18 @@ img {
   border-radius: 4px;
 }
 .modal-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   width: 30px;
   height: 30px;
   background-color: var(--first-bg-color);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
+  cursor: pointer;
 }

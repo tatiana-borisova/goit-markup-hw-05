@@ -65,7 +65,9 @@
       <section class="section banner">
         <div class="container">
           <h1 class="banner-title">Эффективные решения для вашего бизнеса</h1>
-          <button type="button" class="banner-button">Заказать услугу</button>
+          <button type="button" class="banner-button" data-modal-open>
+            Заказать услугу
+          </button>
         </div>
       </section>
       <!-- features -->
@@ -110,25 +112,40 @@
           <h2 class="title">Чем мы занимаемся</h2>
           <ul class="work-list">
             <li class="work-item">
-              <img
-                src="./images/box/box1.jpg"
-                alt="программист печататет на клавиатуре"
-                width="370"
-              />
+              <div class="work-img">
+                <img
+                  src="./images/box/box1.jpg"
+                  alt="программист печататет на клавиатуре"
+                  width="370"
+                />
+                <div class="work-text">
+                  <p>Десктопные приложения</p>
+                </div>
+              </div>
             </li>
             <li class="work-item">
-              <img
-                src="./images/box/box2.jpg"
-                alt="девушка смотрит в заблокированный экран телефона"
-                width="370"
-              />
+              <div class="work-img">
+                <img
+                  src="./images/box/box2.jpg"
+                  alt="девушка смотрит в заблокированный экран телефона"
+                  width="370"
+                />
+                <div class="work-text">
+                  <p>Мобильные приложения</p>
+                </div>
+              </div>
             </li>
             <li class="work-item">
-              <img
-                src="./images/box/box3.jpg"
-                alt="цветовая гамма на планшете"
-                width="370"
-              />
+              <div class="work-img">
+                <img
+                  src="./images/box/box3.jpg"
+                  alt="цветовая гамма на планшете"
+                  width="370"
+                />
+                <div class="work-text">
+                  <p>Дизайнерские решения</p>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -523,9 +540,9 @@
         </div>
       </div>
     </footer>
-    <div class="backdrop is-hidden">
+    <div class="backdrop is-hidden" data-modal>
       <div class="modal">
-        <button class="modal-btn">
+        <button class="modal-btn" data-modal-close>
           <svg class="modal-icon" width="11" height="11">
             <use href="./images/icons.svg#icon-close"></use>
           </svg>
@@ -533,4 +550,5 @@
       </div>
     </div>
   </body>
+  <script src="./js/modal.js"></script>
 </html>
