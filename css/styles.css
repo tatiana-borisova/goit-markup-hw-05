@@ -235,6 +235,10 @@ img {
   border-radius: 4px;
 
   border: none;
+
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-filters:hover,
@@ -499,6 +503,9 @@ img {
 }
 .card {
   display: block;
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card-text {
   padding: 20px 24px;
@@ -638,6 +645,11 @@ img {
   pointer-events: none;
 }
 .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   width: 528px;
   height: 581px;
 
