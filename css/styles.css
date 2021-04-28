@@ -11,6 +11,9 @@
   --card-set-gap: 30px;
 
   --icon-color: #afb1b8;
+
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 250ms;
 }
 html {
   box-sizing: border-box;
@@ -146,9 +149,7 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
 
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--duration) var(--timing-function);
 }
 .nav-item > .link {
   color: var(--title-text-color);
@@ -169,9 +170,9 @@ img {
   position: relative;
 }
 .current::after {
+  content: '';
   position: absolute;
   bottom: -1px;
-  content: '';
   width: 100%;
   height: 4px;
   background-color: var(--accent-color);
@@ -193,8 +194,6 @@ img {
 /* buttons */
 
 .banner-button {
-  display: inline-block;
-
   color: white;
   background-color: var(--accent-color);
 
@@ -205,16 +204,15 @@ img {
   cursor: pointer;
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border: none;
   border-radius: 4px;
 
   padding: 10px 32px;
   margin-top: 30px;
 
-  border: none;
-
   transition-property: color, background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
 }
 .banner-button:hover,
 .banner-button:focus {
@@ -237,8 +235,8 @@ img {
   border: none;
 
   transition-property: color, background-color, box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
 }
 
 .button-filters:hover,
@@ -425,8 +423,8 @@ img {
   color: var(--icon-color);
 
   transition-property: color, background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
 }
 .team-social-link:hover,
 .team-social-link:focus {
@@ -462,8 +460,8 @@ img {
   color: var(--icon-color);
 
   transition-property: color, border;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
 }
 .clients-link:hover,
 .clients-link:focus {
@@ -503,9 +501,8 @@ img {
 }
 .card {
   display: block;
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  transition: box-shadow var(--duration) var(--timing-function);
 }
 .card-text {
   padding: 20px 24px;
@@ -534,25 +531,29 @@ img {
   position: relative;
   display: flex;
   align-items: center;
+
+  overflow: hidden;
 }
 .card-description {
   position: absolute;
+  transform: translateY(100%);
+
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
-  padding-left: 24px;
-  padding-right: 24px;
-  opacity: 0;
+  padding: 0 24px;
 
   font-size: 18px;
   line-height: 1.56;
   color: white;
   background-color: rgba(33, 150, 243, 0.9);
+
+  transition: transform var(--duration) var(--timing-function);
 }
 .card:hover .card-description,
 .card:focus .card-description {
-  opacity: 1;
+  transform: translateY(0);
 }
 
 /* footer */
@@ -590,9 +591,7 @@ img {
 }
 .white,
 .grey {
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--duration) var(--timing-function);
 }
 .footer-title {
   font-weight: 700;
@@ -620,9 +619,7 @@ img {
   width: 100%;
   height: 100%;
 
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--duration) var(--timing-function);
 }
 .footer-social-link:hover,
 .footer-social-link:focus {
@@ -630,6 +627,13 @@ img {
 }
 .footer-social-icon {
   fill: white;
+}
+
+/* modal */
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 .backdrop {
   position: fixed;
@@ -639,24 +643,34 @@ img {
   height: 100%;
 
   background-color: rgba(0, 0, 0, 0.2);
+
+  opacity: 1;
+  transition: opacity var(--duration) var(--timing-function);
 }
-.backdrop.is-hidden {
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.9);
   opacity: 0;
-  pointer-events: none;
 }
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
 
   width: 528px;
   height: 581px;
+  max-height: 100vh;
+  overflow-y: auto;
 
   background-color: var(--first-bg-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+  transition-property: transform, opacity;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
 }
 .modal-btn {
   position: absolute;
